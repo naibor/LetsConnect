@@ -13,12 +13,12 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 
-class TestinConfig(Config):
+class TestingConfig(Config):
     """configuration for testing,with separate test database """
     TESTING = True
     DEBUG = True
 
-class StagingConfig(config):
+class StagingConfig(Config):
     """Configurations for staging"""
     DEBUG = True
 
