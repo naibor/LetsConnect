@@ -1,4 +1,4 @@
-from app.api.api import app 
+from application import app 
 # flask instance
 from instance.config import app_config
 # enviromnent configurations setting
