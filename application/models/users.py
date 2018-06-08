@@ -1,8 +1,8 @@
-userinfo ={}
+global usersinfo ={}
 class User():
     count = 0
     # track user count
-    def __init__(self, username, email, password, confirmpassword):
+    def __init__(self, name, username, email, password, confirmpassword):
         self.username = username
         self.email = email
         self.password = password
@@ -20,7 +20,7 @@ class User():
             "self.business":business
         }
 
-        userinfo[self.name]=new_user
+        usersinfo[self.name]=new_user
 
     
 
