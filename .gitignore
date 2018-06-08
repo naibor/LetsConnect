@@ -1,1 +1,3 @@
 letenv
+.vscode
+__pycache__
