@@ -1,26 +1,27 @@
-global usersinfo ={}
+USERSINFO = {}
 class User():
     count = 0
     # track user count
     def __init__(self, name, username, email, password, confirmpassword):
+        self.name = name
         self.username = username
         self.email = email
         self.password = password
-        self,confirmpassword = confirmpassword
+        self.confirmpassword = confirmpassword
         User.count += 1 #increments by 1 with every user
 
 
     def save(self):
         """users are added and saved"""
-        new_user{
-            "self.name":name,
-            "self.username":username,
-            "self.password":password,
-            "self.confirmpassword":confirmpassword,
-            "self.business":business
+        new_user = {
+            "name":self.name,
+            "username":self.username,
+            "email":self.email,
+            "password":self.password,
+            "confirmpassword":self.confirmpassword
         }
 
-        usersinfo[self.name]=new_user
+        USERSINFO[self.name]=new_user
 
     
 

@@ -1,29 +1,24 @@
 from flask import Flask
-from flask-restful import resource
-from application.models.users import User, usersinfo
-from marshmallow import schema, fields
-import datetime 
-from application import app, api
+from flask_restful import Resource
+from application.models.users import User, USERSINFO
+from marshmallow import Schema, fields
+from datetime import datetime 
+from application import api, app
 
 
 A_user=User("lisa","naibor","liznaibor@gmail.com","12365","12365")
-usersinfo ={name:{
-    name:"lisa",
-    username:"naibor",
-    email:"liznaibor@gmail.com",
-    password:"12365",
-    confirm_password:"12365"
-},
-{   name:"Lala",
-    username:"bure",
-    email:"naibor@gmail.com",
-    password:"1236",
-    confirm_password:"1236"
-
-}}
-class RegisterSchema(schema):
+usersinfo = {
+    "lisa": {
+        "name":"lisa",
+        "username":"naibor",
+        "email":"liznaibor@gmail.com",
+        "password":"12365",
+        "confirm_password":"12365"
+    }
+}
+class RegisterSchema(Schema):
     class Meta:
-        fields =  ("name","username","email","password", "confirm_password", "date_created")
+        fields =  ("name","username","email","password", "confirmpassword", "date_created")
         # tuple or list of fields to be included in the serialized results
         exclude = ("password","confirmpassword","date_created")
         # what to exclude from serialized results nested lists in dotted delimiter
@@ -37,12 +32,12 @@ data = schema.dumps(A_user)
 # to return json string  
 
 class RegisterApi(Resource):
-    def __init__(self, name, username, email,password,confim_password):
+    def __init__(self, name, username, email, password, confirmpassword):
         self.name = name
         self.username = username
         self.email = email
         self.password = password
-        self.confirm_password = confirm_password
+        self.confirmpassword = confirmpassword
         self.date_created = datetime.now()
 
     def post(self):
@@ -75,9 +70,8 @@ class ResetPasswordApi():
 
 
 # add_resource function registers the routes with the framework using given endpoints
-api.add_resource(RegisterApi,'/api/v1/auth/register')
-api.add_resource(LogInApi, '/api/v1/auth/login')
-api.add_resource(LogOutApi, '/api/v1/auth/logout')
-api.add_resource(ResetPasswordApi, '/api/v1/auth/reset-password')
-
-
+# api.add_resource(RegisterApi,'/api/v1/auth/register')
+# api.add_resource(LogInApi, '/api/v1/auth/login')
+# api.add_resource(LogOutApi, '/api/v1/auth/logout')
+# api.add_resource(ResetPasswordApi, '/api/v1/auth/reset-password')
+# api.init_app(app)
